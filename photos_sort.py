@@ -38,11 +38,12 @@ if __name__ == '__main__':
     
     jpeg_files = set(os.path.splitext(file)[0] for file in os.listdir(jpeg_folder) if os.path.isfile(os.path.join(jpeg_folder, file)))
     raw_files = set(os.path.splitext(file)[0] for file in os.listdir(raw_folder) if os.path.isfile(os.path.join(raw_folder, file)))
-
-    if len(jpeg_files) != len([file for file in os.listdir(raw_folder) if os.path.isfile(os.path.join(raw_folder, file))]) or len(raw_files) != len([file for file in os.listdir(raw_folder) if os.path.isfile(os.path.join(raw_folder, file))]) :
+    
+    if len(jpeg_files) != len([file for file in os.listdir(jpeg_folder) if os.path.isfile(os.path.join(jpeg_folder, file))]) or len(raw_files) != len([file for file in os.listdir(raw_folder) if os.path.isfile(os.path.join(raw_folder, file))]) :
         sys.exit("Exit because same file name with different extensions exists")
 
     pics_to_delete_from_raw = raw_files.difference(jpeg_files)
+    print("Total numbers of pictures to move : ", len(pics_to_delete_from_raw))
     for file in pics_to_delete_from_raw:
         print("Item to delete : {}.{}".format(file, raw_extension))
         if is_delete:
