@@ -1,3 +1,19 @@
+'''
+@__author__ = Gourav-Joshi
+Usage : Every time when selecting pictures I want to keep same copy of jpegs & raw images.
+
+python photos_sort.py -r <raw_folder path> -j <jpeg_folder path> -re <raw_extension> -e <jpeg_extension> -d 
+
+default values : 
+    raw_extension   default='CR3'  
+    jpeg_extension  default='jpeg'
+    -d delete       false
+
+Don't trust me : Always check all options before executing.
+'''
+
+
+
 import argparse
 import os
 import shutil
@@ -9,7 +25,7 @@ if __name__ == '__main__':
     parser.add_argument('-j', '--jpeg_folder', help='JPEG folder path')
     parser.add_argument('-re', '--raw_extension', default='CR3', help='Raw file extension')
     parser.add_argument('-e', '--jpeg_extension', default='jpeg', help='JPEG file extension')
-    parser.add_argument('-d', '--delete', action='store_true', help='Delete = True')
+    parser.add_argument('-d', '--delete', action='store_true', help='Delete = True else just prints messages')
     args = parser.parse_args()
     print(args)
     raw_folder = args.raw_folder
